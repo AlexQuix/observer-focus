@@ -8,10 +8,10 @@ const queryDocument = (selector:string)=>{
 
 
 function attachClassName(element:HTMLObserverFocusElement){
-    element.classList.add("command-focus");
+    element.classList.add("focused");
 };
 function removeClassName(element:HTMLObserverFocusElement){
-    element.classList.remove("command-focus");
+    element.classList.remove("focused");
 };
 
 
