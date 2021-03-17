@@ -2,7 +2,7 @@ const path = require("path");
 const dotenv = require("dotenv").config();
 const env = dotenv.parsed;
 
-let urloutput = env.URL_OUTPUT === "production" ? "./dist" : "./src/demo/js";
+let urloutput = env.URL_OUTPUT === "production" ? "./dist" : "./demo/js";
 
 const JSLoader = {
   test: /\.(j|t)s$/,
@@ -21,6 +21,6 @@ module.exports = {
     rules: [JSLoader],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".js"],
   },
 };

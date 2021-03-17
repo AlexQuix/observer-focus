@@ -1,5 +1,5 @@
 function initApp(){
-    let observer = document.querySelector(".command-observer-focus");
+    let observer = document.querySelector(".wrapper-observer-focus");
     observer.command.onfocus = handleFocus;
     observer.command.onlosefocus = handleLosefocus;
 }
