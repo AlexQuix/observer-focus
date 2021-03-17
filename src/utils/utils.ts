@@ -7,10 +7,10 @@ const queryDocument = (selector:string)=>{
 };
 
 
-function attachClassName(element:HTMLCommandElement){
+function attachClassName(element:HTMLObserverFocusElement){
     element.classList.add("command-focus");
 };
-function removeClassName(element:HTMLCommandElement){
+function removeClassName(element:HTMLObserverFocusElement){
     element.classList.remove("command-focus");
 };
 
@@ -25,7 +25,7 @@ function hasFocus(pointDetect:number, range:{minRange:number, maxRange:number}):
     }
     return false;
 }
-function getRange(element:HTMLCommandElement){
+function getRange(element:HTMLObserverFocusElement){
     let minRange = element.offsetTop - window.scrollY;
     let maxRange = element.clientHeight + minRange;
     return{minRange, maxRange};

@@ -11,6 +11,19 @@ function makeEvent(type: string, target: HTMLObserverFocusElement):ObserverFocus
     let event:ObserverFocus.EventContainer = {type, target};
     return event;
 }
+function throwEvent(element:HTMLObserverFocusElement, type:string){
+    let event = makeEvent(type, element);
+    switch(type){
+        case "losefocus":
+            if(element.observerFocus.onlosefocus){
+                element.observerFocus.onlosefocus(event);
+            }
+        break;
+        case "focus":
+            element.observerFocus.onlosefocus(event);
+        break;
+    }
+}
 
 class Focus implements Focus.IFocus{
     private pointDetect: number;
@@ -22,20 +35,22 @@ class Focus implements Focus.IFocus{
         this.pointDetect = getPointDetect();
         this.discoverFocus();
     }
+
+    focusingContainer(element:HTMLObserverFocusElement){
+        if(this.contFocused){
+            removeClassName(this.contFocused);
+            throwEvent(this.contFocused, "losefocus");
+        }
+        this.contFocused = element;
+        attachClassName(this.contFocused);
+        throwEvent(this.contFocused, "focus");
+    }
     discoverFocus(){
         for(let element of this.divObserverFocus){
             let range = getRange(element);
             let result = hasFocus(this.pointDetect, range);
             if(result){
-                if(this.contFocused){
-                    removeClassName(this.contFocused);
-                    let event = makeEvent('losefocus', element);
-                    this.contFocused.observerFocus.onlosefocus(event);
-                }
-                this.contFocused = element;
-                attachClassName(this.contFocused);
-                let event = makeEvent('focus', element);
-                this.contFocused.observerFocus.onfocus(event);
+                this.focusingContainer(element);
                 break;
             }
         }

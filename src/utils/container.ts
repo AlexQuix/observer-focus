@@ -1,4 +1,4 @@
-class ContainerFocus{
+class ContainerFocus implements ObserverFocus.ContainerFocus{
     constructor(
         private element:HTMLDivElement
     ){}

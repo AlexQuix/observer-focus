@@ -14,8 +14,7 @@ declare namespace Focus{
     declare interface IFocus{
         verifyFocus:()=>void;
         discoverFocus: ()=>void;
-        onfocus?:()=>void;
-        onlosefocus?:()=>void
+        focusingContainer: (element: HTMLObserverFocusElement)=>void;
     }
 }
 
