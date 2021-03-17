@@ -2,18 +2,21 @@ class ContainerFocus{
     constructor(
         private element:HTMLDivElement
     ){}
-    onfocus = (e:ContainerFocus.EventContainer)=>{};
-    onlosefocus = (e:ContainerFocus.EventContainer)=>{};
+    onfocus = (e:ObserverFocus.EventContainer)=>{};
+    onlosefocus = (e:ObserverFocus.EventContainer)=>{};
+    get Element(){
+        return this.element;
+    }
 };
 
-function putStructureElement(contElements:HTMLDivElement[]):HTMLCommandElement[]{
-    let contCommands:HTMLCommandElement[] = [];
-    for(let contelement of contElements){
-        let contcommand = contelement as HTMLCommandElement;
-        contcommand.command = new ContainerFocus(contelement);
-        contCommands.push(contcommand);
+function putStructureElement(divWrapperObserverFocus:HTMLDivElement[]):HTMLObserverFocusElement[]{
+    let divObserverFocus:HTMLObserverFocusElement[] = [];
+    for(let element of divWrapperObserverFocus){
+        let divfocus = element as HTMLObserverFocusElement;
+        divfocus.observerFocus = new ContainerFocus(element);
+        divObserverFocus.push(divfocus);
     }
-    return contCommands;
+    return divObserverFocus;
 };
 
 export {ContainerFocus, putStructureElement};

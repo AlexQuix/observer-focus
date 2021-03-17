@@ -7,49 +7,48 @@ import {
 } from "./utils";
 
 
-function makeEvent(type: string, target: HTMLCommandElement):ContainerFocus.EventContainer{
-    let event:ContainerFocus.EventContainer = {type, target};
+function makeEvent(type: string, target: HTMLObserverFocusElement):ObserverFocus.EventContainer{
+    let event:ObserverFocus.EventContainer = {type, target};
     return event;
 }
 
 class Focus implements Focus.IFocus{
     private pointDetect: number;
-    private focusedCont: HTMLCommandElement;
-    private Event
+    private contFocused: HTMLObserverFocusElement;
     constructor(
-        private contCommands:HTMLCommandElement[]
+        private divObserverFocus:HTMLObserverFocusElement[]
     ){
-        this.focusedCont = this.contCommands[0];
+        this.contFocused = this.divObserverFocus[0];
         this.pointDetect = getPointDetect();
         this.discoverFocus();
     }
     discoverFocus(){
-        for(let contcommand of this.contCommands){
-            let range = getRange(contcommand);
+        for(let element of this.divObserverFocus){
+            let range = getRange(element);
             let result = hasFocus(this.pointDetect, range);
             if(result){
-                if(this.focusedCont){
-                    removeClassName(this.focusedCont);
-                    let event = makeEvent('losefocus', contcommand);
-                    this.focusedCont.command.onlosefocus(event);
+                if(this.contFocused){
+                    removeClassName(this.contFocused);
+                    let event = makeEvent('losefocus', element);
+                    this.contFocused.observerFocus.onlosefocus(event);
                 }
-                this.focusedCont = contcommand;
-                attachClassName(this.focusedCont);
-                let event = makeEvent('focus', contcommand);
-                this.focusedCont.command.onfocus(event);
+                this.contFocused = element;
+                attachClassName(this.contFocused);
+                let event = makeEvent('focus', element);
+                this.contFocused.observerFocus.onfocus(event);
                 break;
             }
         }
     }
     verifyFocus(){
-        let range = getRange(this.focusedCont as HTMLCommandElement);
+        let range = getRange(this.contFocused as HTMLObserverFocusElement);
         let result = hasFocus(this.pointDetect, range);
         if(!result){
             this.discoverFocus();
         }
     }
-    get ContCommands(){
-        return this.contCommands;
+    get DivObserverFocus(){
+        return this.divObserverFocus;
     }
 }
 

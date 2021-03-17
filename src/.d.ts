@@ -1,13 +1,12 @@
-declare namespace ContainerFocus{
+declare namespace ObserverFocus{
     declare class ContainerFocus{
-        private element:HTMLDivElement
         constructor(element:HTMLDivElement);
         onfocus:(e:ContainerFocus.EventContainer)=>void;
         onlosefocus:(e:ContainerFocus.EventContainer)=>void;
     }
     declare interface EventContainer{
         type: string;
-        target: HTMLCommandElement;
+        target: HTMLObserverFocusElement;
     }
 }
 
@@ -28,4 +27,4 @@ declare namespace Component{
     }
 }
 
-declare type HTMLCommandElement = {command:Command} & HTMLDivElement;
+declare type HTMLObserverFocusElement = {observerFocus:ObserverFocus.ContainerFocus} & HTMLDivElement;
