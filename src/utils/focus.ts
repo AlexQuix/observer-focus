@@ -7,11 +7,11 @@ import {
 } from "./utils";
 
 
-function makeEvent(type: string, target: HTMLObserverFocusElement):ObserverFocus.EventContainer{
+function makeEvent(type: Focus.TypeEvents, target: HTMLObserverFocusElement):ObserverFocus.EventContainer{
     let event:ObserverFocus.EventContainer = {type, target};
     return event;
 }
-function throwEvent(element:HTMLObserverFocusElement, type:string){
+function throwEvent(element:HTMLObserverFocusElement, type:Focus.TypeEvents){
     let event = makeEvent(type, element);
     switch(type){
         case "losefocus":
@@ -73,4 +73,4 @@ class Focus implements Focus.IFocus{
 }
 
 
-export default Focus;
+export {Focus, makeEvent, throwEvent};
