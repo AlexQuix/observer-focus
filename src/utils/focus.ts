@@ -28,24 +28,27 @@ function throwEvent(element:HTMLObserverFocusElement, type:string){
 }
 
 class Focus implements Focus.IFocus{
+    private isFirstExecution: boolean;
     private pointDetect: number;
     private contFocused: HTMLObserverFocusElement;
     constructor(
         private divObserverFocus:HTMLObserverFocusElement[]
     ){
+        this.isFirstExecution = true;
         this.contFocused = this.divObserverFocus[0];
         this.pointDetect = getPointDetect();
         this.discoverFocus();
     }
 
     focusingContainer(element:HTMLObserverFocusElement){
-        if(this.contFocused){
+        if(!this.isFirstExecution){
             removeClassName(this.contFocused);
             throwEvent(this.contFocused, "losefocus");
         }
         this.contFocused = element;
         attachClassName(this.contFocused);
         throwEvent(this.contFocused, "focus");
+        this.isFirstExecution = false;
     }
     discoverFocus(){
         for(let element of this.divObserverFocus){

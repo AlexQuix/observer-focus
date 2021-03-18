@@ -11,8 +11,8 @@ const JSLoader = {
 };
 
 module.exports = {
-  mode: "production",
-  entry: "./src/index.ts",
+  mode: env.URL_OUTPUT,
+  entry: "./demo/ts/index.ts",
   output: {
     path: path.resolve(__dirname, urloutput),
     filename: "main.js",
