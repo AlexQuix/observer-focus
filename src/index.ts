@@ -1,4 +1,4 @@
-import Focus from "./utils/focus";
+import {Focus} from "./utils/focus";
 import {putStructureElement} from './utils/container'
 import {queryDocument} from "./utils/utils";
 

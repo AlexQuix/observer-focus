@@ -1,6 +1,5 @@
 declare namespace ObserverFocus{
     declare class ContainerFocus{
-        constructor(element:HTMLDivElement);
         onfocus:(e:ContainerFocus.EventContainer)=>void;
         onlosefocus:(e:ContainerFocus.EventContainer)=>void;
     }
@@ -16,6 +15,7 @@ declare namespace Focus{
         discoverFocus: ()=>void;
         focusingContainer: (element: HTMLObserverFocusElement)=>void;
     }
+    type TypeEvents = "focus" |  "losefocus";
 }
 
 declare namespace Component{
