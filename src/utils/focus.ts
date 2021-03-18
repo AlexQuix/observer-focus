@@ -20,7 +20,9 @@ function throwEvent(element:HTMLObserverFocusElement, type:string){
             }
         break;
         case "focus":
-            element.observerFocus.onlosefocus(event);
+            if(element.observerFocus.onfocus){
+                element.observerFocus.onfocus(event);
+            }
         break;
     }
 }

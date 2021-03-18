@@ -2,9 +2,13 @@ import Focus from "./utils/focus";
 import {putStructureElement} from './utils/container'
 import {queryDocument} from "./utils/utils";
 
-function commenceApp() {
-    let contCommand = putStructureElement(queryDocument(".wrapper-observer-focus"));
-    let focus = new Focus(contCommand);
+function changeStructureElement(query:string = ".wrapper-observer-focus"):HTMLObserverFocusElement[]{
+    let wrapperFocus = putStructureElement(queryDocument(query));
+    return wrapperFocus;
+}
+function executeFocus(wrapperFocus:HTMLObserverFocusElement[]){  
+    let focus = new Focus(wrapperFocus);
     window.onscroll = focus.verifyFocus.bind(focus);
 }
-window.addEventListener("load", commenceApp);
+
+export {changeStructureElement, executeFocus};
