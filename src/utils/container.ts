@@ -1,4 +1,12 @@
 class ContainerFocus implements ObserverFocus.ContainerFocus{
+    constructor(onfocus?:(e:ObserverFocus.EventContainer)=>void, onlosefocus?:(e:ObserverFocus.EventContainer)=>void){
+        if(onfocus){
+            this.onfocus = onfocus;
+        }
+        if(onlosefocus){
+            this.onlosefocus = onlosefocus;
+        }
+    }
     onfocus = (e:ObserverFocus.EventContainer)=>{};
     onlosefocus = (e:ObserverFocus.EventContainer)=>{};
 };

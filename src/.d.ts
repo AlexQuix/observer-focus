@@ -20,15 +20,15 @@ declare namespace Focus{
 
 declare namespace Component{
     interface PropComponent{
-        onfocus?:(e:ContainerFocus.EventContainer)=>void;
-        onlosefocus?:(e:ContainerFocus.EventContainer)=>void;
+        onfocus?:(e:ObserverFocus.EventContainer)=>void;
+        onlosefocus?:(e:ObserverFocus.EventContainer)=>void;
         children?:any;
     }
 }
 
 declare namespace JSX{
     interface IntrinsicElements{
-        "observer-focus": any
+        "observer-focus": any;
     }
 }
 
