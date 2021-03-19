@@ -2,25 +2,27 @@ const path = require("path");
 const dotenv = require("dotenv").config();
 const env = dotenv.parsed;
 
-let urloutput = env.URL_OUTPUT === "production" ? "./dist" : "./demo/js";
 
 const JSLoader = {
-  test: /\.(j|t)s$/,
+  test: /\.ts(x)?$/,
   use: ["babel-loader", "ts-loader"],
   exclude: /node_modules/,
 };
 
 module.exports = {
   mode: env.URL_OUTPUT,
-  entry: "./demo/ts/index.ts",
+  entry: {
+    "main": "./demo/focus-card/ts/index.ts",
+    "main-react": "./demo/focus-card-react/ts/index.tsx"
+  },
   output: {
-    path: path.resolve(__dirname, urloutput),
-    filename: "main.js",
+    path: path.resolve(__dirname, "demo"),
+    filename: "js/[name].js",
   },
   module: {
     rules: [JSLoader],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js", ".tsx"],
   },
 };

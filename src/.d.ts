@@ -26,4 +26,10 @@ declare namespace Component{
     }
 }
 
+declare namespace JSX{
+    interface IntrinsicElements{
+        "observer-focus": any
+    }
+}
+
 declare type HTMLObserverFocusElement = {observerFocus:ObserverFocus.ContainerFocus} & HTMLDivElement;
