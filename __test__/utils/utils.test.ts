@@ -1,9 +1,8 @@
-import { HTMLCommandElement } from "../../utils/command";
 import {
     getRange, 
     getPointDetect,
     hasFocus
-} from "../../utils/utils";
+} from "../../src/utils/utils";
 
 let windowSpy:jest.SpyInstance<any>;
 beforeAll(()=>{
@@ -16,7 +15,7 @@ describe("analyzing the behavior of functions", ()=>{
 
     it("getRange: should calculate the distance of the element up and downs", ()=>{
         windowSpy.mockImplementationOnce(()=>({scrollY: 50}));
-        let received = getRange(div as HTMLCommandElement);
+        let received = getRange(div as HTMLObserverFocusElement);
         expect(received).toEqual({minRange:50, maxRange:150});
 
         windowSpy.mockClear();
