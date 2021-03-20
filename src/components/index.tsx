@@ -1,10 +1,5 @@
-import React from 'react';
-import ReactDOM from "react-dom";
+import {ContainerObserverFocus} from "./container-observer-focus";
+import {ObserverFocus} from "./observer-focus";
+import {executeFocus} from "../index";
 
-function ObserverFocus(prop:Component.PropComponent){
-    return (
-        <div>
-            
-        </div>
-    )
-}
+export {ContainerObserverFocus, ObserverFocus, executeFocus};
