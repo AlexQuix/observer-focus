@@ -1,4 +1,4 @@
-import {changeStructureElement, executeFocus} from '../../src/index';
+import {changeStructureElement, executeFocus} from '../../../src/index';
 
 
 function execApp(){
