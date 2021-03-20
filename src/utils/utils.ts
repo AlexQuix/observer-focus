@@ -6,6 +6,13 @@ const queryDocument = (selector:string)=>{
     return contElements as HTMLDivElement[];
 };
 
+function genereUniqueID(){
+    let time = new Date().getTime()
+    let random = Math.floor(Math.random() * 100000);
+    let id = `obs-focus-${time.toString(32)}-${random.toString(16)}`;
+    return id
+}
+
 
 function attachClassName(element:HTMLObserverFocusElement){
     element.classList.add("focused");
@@ -42,5 +49,6 @@ export {
     removeClassName,
     hasFocus,
     getRange,
-    getPointDetect
+    getPointDetect,
+    genereUniqueID
 };
