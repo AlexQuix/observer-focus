@@ -1,6 +1,6 @@
 {
   "name": "observer-focus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "encuentra que elemento esta en medio de la pantalla",
   "main": "index.js",
   "scripts": {
